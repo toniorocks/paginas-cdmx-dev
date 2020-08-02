@@ -1,0 +1,19 @@
+
+#contenedor{
+    height: 40rem;
+    background-color: rgba(255, 255, 255, .95);
+}
+.card{
+    background-color: transparent;
+    border: 0;
+}
+.gradiente{
+    background: rgba(42,87,105,1);
+    background: -moz-linear-gradient(left, rgba(42,87,105,1) 0%, rgba(250,189,74,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(42,87,105,1)), color-stop(100%, rgba(250,189,74,1)));
+    background: -webkit-linear-gradient(left, rgba(42,87,105,1) 0%, rgba(250,189,74,1) 100%);
+    background: -o-linear-gradient(left, rgba(42,87,105,1) 0%, rgba(250,189,74,1) 100%);
+    background: -ms-linear-gradient(left, rgba(42,87,105,1) 0%, rgba(250,189,74,1) 100%);
+    background: linear-gradient(to right, rgba(42,87,105,1) 0%, rgba(250,189,74,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a5769', endColorstr='#fabd4a', GradientType=1 );
+}
