@@ -15,19 +15,27 @@
 		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
 		rel="stylesheet">
 
+	<link rel="stylesheet" href="assets/icofont/icofont.min.css">
+
+
+
+
 
 	<style>
 		body {
-			background-image: url('assets/imagenes/background.png');
+			background-image: url('assets/imagenes/223257-P26QWC-240.jpg');
 			background-position: center;
 			background-repeat: no-repeat;
+			/* background-color: #FABD4A; */
 		}
 
 		* {
 			font-family: 'Roboto', sans-serif;
 		}
 
-		h1, h2, h3 {
+		h1,
+		h2,
+		h3 {
 			font-family: 'Ubuntu', sans-serif;
 			font-weight: bolder;
 		}
@@ -36,18 +44,44 @@
 			font-size: 3.5rem;
 		}
 
-		h3{
-			font-size: 2.5rem;;
+		h3 {
+			font-size: 2.5rem;
+			;
 		}
 
-		h4{
+		h4,
+		h6 {
 			text-transform: uppercase;
-			font-size: 1.3  rem;
+			font-size: 1.3 rem;
 			font-weight: bolder;
 		}
 
-		.text-primary{
+		.text-primary {
 			color: #FA9600 !important;
+		}
+
+		.text-info {
+			color: #2A5769 !important;
+		}
+
+		.btn-primary {
+			background-color: #FA9600 !important;
+			border: 0;
+		}
+
+		.bg-secondary {
+			background-color: #002E40 !important;
+		}
+
+		.gradiente {
+			background: rgba(42, 87, 105, 1);
+			background: -moz-linear-gradient(left, rgba(42, 87, 105, 1) 0%, rgba(250, 189, 74, 1) 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, rgba(42, 87, 105, 1)), color-stop(100%, rgba(250, 189, 74, 1)));
+			background: -webkit-linear-gradient(left, rgba(42, 87, 105, 1) 0%, rgba(250, 189, 74, 1) 100%);
+			background: -o-linear-gradient(left, rgba(42, 87, 105, 1) 0%, rgba(250, 189, 74, 1) 100%);
+			background: -ms-linear-gradient(left, rgba(42, 87, 105, 1) 0%, rgba(250, 189, 74, 1) 100%);
+			background: linear-gradient(to right, rgba(42, 87, 105, 1) 0%, rgba(250, 189, 74, 1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a5769', endColorstr='#fabd4a', GradientType=1);
 		}
 	</style>
 
@@ -60,9 +94,55 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyCazHuYrsHw0XKNH2XJbzBiX_W2-clgeuo",
+			authDomain: "cdmx-22bc5.firebaseapp.com",
+			databaseURL: "https://cdmx-22bc5.firebaseio.com",
+			projectId: "cdmx-22bc5",
+			storageBucket: "cdmx-22bc5.appspot.com",
+			messagingSenderId: "999226931280",
+			appId: "1:999226931280:web:eddb74b2345701d229b955",
+			measurementId: "G-TLCNRE770K"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+	</script>
+
 </head>
 
 <body>
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '827601704651306',
+				cookie: true,
+				xfbml: true,
+				version: 'v8.0'
+			});
+
+			FB.AppEvents.logPageView();
+
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) { return; }
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 	<app-root></app-root>
 </body>
 

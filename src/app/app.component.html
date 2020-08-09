@@ -1,39 +1,20 @@
-<div id="contenedor" class="container mt-5 rounded pt-5 pl-5 pr-5">
+<div id="contenedor" class="container mt-3 rounded pt-5 pl-5 pr-5 pb-1">
 	<div class="row">
-		<div class="col">
-			<h1>cdmx<strong class="text-primary"><b>.dev</b></strong></h1>	
+		<div id="inicio" class="col" (click)="inicio()">
+			<h1>cdmx<strong class="text-primary"><b>.dev</b></strong></h1>
 		</div>
 		<div class="col-2">
-			<button class="btn btn-light text-secondary"><b>¿que incluye?</b></button>
+			<button class="btn btn-light" (click)="planes()"><b>ver otros planes</b></button>
 		</div>
 		<div class="col-3">
-			<button class="btn btn-block btn-light"><b>solicitar información</b></button>
+			<button class="btn btn-block btn-light" (click)="informacion()"><b>solicitar información</b></button>
 		</div>
 		<div class="col-2">
-			<button class="btn btn-light"><b>contáctanos</b></button>
+			<button class="btn btn-light" (click)="contactanos()"><b>contáctanos</b></button>
 		</div>
 	</div>
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-4">
-				<h4 class="text-primary">Promoción</h4>
-				<h2 class="text-secondary"><b>Página web</b></h2>
-				<h3 class="text-primary"><strong>$1999 MXN</strong></h3>
-				<p><small>No incluye impuestos</small></p>
-				<p>Genere o aumente su precencia en la web con nosotros</p>
-				<button class="btn btn-lg gradiente text-light border-0">Saber más</button>
-			</div>
-			<div class="col-5 offset-2">
-				<div class="card">
-					<!-- <div class="card-header">
-						Pruebas
-					</div> -->
-					<div class="card-body">
-						<img src="assets/imagenes/main-01.png" class="img-fluid" alt="Responsive image">
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="container mt-5 pb-3 mb-5">
+		<router-outlet></router-outlet>
 	</div>
-	
 </div>
+&nbsp;
