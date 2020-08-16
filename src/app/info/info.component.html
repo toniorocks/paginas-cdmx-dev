@@ -1,24 +1,62 @@
-<div class="row">
-    <div class="col">
-        <h3 class="text-info">Información</h3>
-        <div class="card border-0">
-            <div class="card-body">
-                <h6>Selecciona un producto</h6>
-                <div class="card text-light">
-                    <div class="card-body">
-                        <button class="btn btn-primary btn-block btn-lg"><i class="icofont-web icofont-1x"></i> webapp -
-                            básica</button>
+<div class="d-flex justify-content-center flex-row">
+    <div class="p-2">
+        <div class="access-module">
+            <div class="d-flex flex-row">
+                <button class="btn rounded-0" [className]="accesoActive ? 'btn btn-primary' : 'btn btn-light'"
+                    [disabled]="accesoActive" (click)="login()"><i class="icofont-login"></i> Login</button>
+                <button class="btn rounded-0" [className]="registroActive ? 'btn btn-primary' : 'btn btn-light'"
+                    [disabled]="registroActive" (click)="registro()"><i class="icofont-ui-browser"></i>
+                    Registro</button>
+                <button (click)="ayuda()" [className]="ayudaActive ? 'btn btn-primary' : 'btn btn-light'"
+                    [disabled]="ayudaActive">
+                    <i class="icofont-question"></i>
+                </button>
+            </div>
 
-                        <button class="btn btn-primary btn-block btn-lg"><i class="icofont-web icofont-1x"></i> webapp -
-                            estándar</button>
+            <div class="card rounded-0 modulo-acceso" id="acceso">
+                <div class="card-body p-4">
+                    <p class="text-right"><strong>Acceso de usuario</strong><br><small>¿No tienes cuenta? registrate
+                            aquí</small></p>
+                    <input type="email" name="correo" class="form-control input-lg mb-3 rounded-0"
+                        placeholder="Correo electrónico">
+                    <input type="password" name="contra" class="form-control input-lg mb-3 rounded-0"
+                        placeholder="Contraseña">
+                    <button class="btn btn-lg btn-secondary btn-block">Entrar</button>
+                    <small>¿Problemas para entrar?</small>
+                </div>
+            </div>
 
-                        <button class="btn btn-primary btn-block btn-lg"><i class="icofont-web icofont-1x"></i>
-                            e-commerce</button>
+
+            <div class="card rounded-0 modulo-acceso" id="registro">
+
+                <div class="card-body">
+                    <p class="text-right"><strong>Registro de usuario</strong><br><small>¿Ya tienes cuenta? Ingresa
+                            aquí</small></p>
+                    <input type="email" name="correo" class="form-control input-lg mb-3 rounded-0"
+                        placeholder="Correo electrónico">
+                    <input type="password" name="contra" class="form-control input-lg mb-3 rounded-0"
+                        placeholder="Contraseña">
+                    <input type="password" name="contra" class="form-control input-lg mb-3 rounded-0"
+                        placeholder="Contraseña">
+                    <button class="btn btn-lg btn-primary btn-block">Enviar</button>
+                    <small>¿Problemas para entrar?</small>
+                </div>
+
+            </div>
+
+            <div class="card rounded-0 modulo-acceso" id="ayuda">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 text-right border-right border-info ayuda" [routerLink]="['/terminos']">
+                            Términos y condiciones del servicio
+                        </div>
+                        <div class="col-6 text-left ayuda">
+                            Aviso de privacidad
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <div class="col"></div>
-    <div class="col"></div>
 </div>

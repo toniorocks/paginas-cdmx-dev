@@ -1,0 +1,15 @@
+.access-module{
+    display: block;
+    width: 400px;
+}
+.ayuda{
+    cursor: pointer;
+    transition: 500;
+    padding: 1em;
+}
+
+.ayuda:hover{
+    
+    border: 1px solid orange;
+
+}

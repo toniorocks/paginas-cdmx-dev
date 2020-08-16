@@ -24,7 +24,7 @@
 	<style>
 		body {
 			background-image: url('assets/imagenes/223257-P26QWC-240.jpg');
-			background-position: center;
+			background-position: top;
 			background-repeat: no-repeat;
 			/* background-color: #FABD4A; */
 		}
@@ -143,7 +143,36 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
+
 	<app-root></app-root>
+
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+	<script>
+		// TODO: Replace the following with your app's Firebase project configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyCazHuYrsHw0XKNH2XJbzBiX_W2-clgeuo",
+			authDomain: "cdmx-22bc5.firebaseapp.com",
+			databaseURL: "https://cdmx-22bc5.firebaseio.com",
+			projectId: "cdmx-22bc5",
+			storageBucket: "cdmx-22bc5.appspot.com",
+			messagingSenderId: "999226931280",
+			appId: "1:999226931280:web:eddb74b2345701d229b955",
+			measurementId: "G-TLCNRE770K"
+		};
+
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+
+	</script>
+
 </body>
 
 </html>
