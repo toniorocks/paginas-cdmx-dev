@@ -7,27 +7,79 @@
                 <button class="btn rounded-0" [className]="registroActive ? 'btn btn-primary' : 'btn btn-light'"
                     [disabled]="registroActive" (click)="registro()"><i class="icofont-ui-browser"></i>
                     Registro</button>
-                <button (click)="ayuda()" [className]="ayudaActive ? 'btn btn-primary' : 'btn btn-light'"
+                <button (click)="ayuda()" [className]="ayudaActive ? 'btn btn-primary shadow' : 'btn btn-light shadow'"
                     [disabled]="ayudaActive">
                     <i class="icofont-question"></i>
                 </button>
             </div>
 
-            <div class="card rounded-0 modulo-acceso" id="acceso">
+            <div class="card rounded-0 modulo-acceso shadow" id="acceso">
                 <div class="card-body p-4">
-                    <p class="text-right"><strong>Acceso de usuario</strong><br><small>¿No tienes cuenta? registrate
-                            aquí</small></p>
-                    <input type="email" name="correo" class="form-control input-lg mb-3 rounded-0"
-                        placeholder="Correo electrónico">
-                    <input type="password" name="contra" class="form-control input-lg mb-3 rounded-0"
-                        placeholder="Contraseña">
-                    <button class="btn btn-lg btn-secondary btn-block">Entrar</button>
-                    <small>¿Problemas para entrar?</small>
+                    <p class="text-right">
+                        <strong>Acceso de usuario</strong><br>
+                        <small>¿No tienes cuenta? regístrate <span
+                                class="text-primary cursor-pointer">aquí</span></small></p>
+                    <form [formGroup]="accesoForm" (ngSubmit)="onSubmit()">
+
+                        <input id="correo" type="email" formControlName="correo"
+                            class="form-control input-lg mb-3 rounded-0" placeholder="Correo electrónico" minlength="5"
+                            maxlength="50" required>
+
+                        <div class="alert alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+
+                            <div class="row" *ngIf="correo.errors.required">
+                                <div class="col-sm-2">
+                                    <i class="icofont-warning"></i>
+                                </div>
+                                <div class="col-sm-10" *ngIf="correo.errors.required">
+                                    El campo es obligatorio
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="correo.errors.email">
+                                <div class="col-sm-2">
+                                    <i class="icofont-warning"></i>
+                                </div>
+                                <div class="col-sm-10">
+                                    Debe ser formato de email
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <input type="password" formControlName="contrasena" class="form-control input-lg mb-3 rounded-0"
+                            placeholder="Contraseña" required minlength="5" maxlength="10">
+
+                        <div class="alert alert-danger"
+                            *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+
+                            <div class="row" *ngIf="contrasena.errors.required">
+                                <div class="col-sm-2">
+                                    <i class="icofont-warning"></i>
+                                </div>
+                                <div class="col-sm-10" *ngIf="contrasena.errors.required">
+                                    El campo es obligatorio
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="contrasena.errors.minlength">
+                                <div class="col-sm-2">
+                                    <i class="icofont-warning"></i>
+                                </div>
+                                <div class="col-sm-10">
+                                    Al menos 5 caracteres
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-lg btn-secondary btn-block mb-2"
+                            [disabled]="!accesoForm.valid">Entrar</button>
+                    </form>
+                    <small class="text-primary cursor-pointer">¿Problemas para entrar?</small>
                 </div>
             </div>
 
 
-            <div class="card rounded-0 modulo-acceso" id="registro">
+            <div class="card rounded-0 modulo-acceso shadow" id="registro">
 
                 <div class="card-body">
                     <p class="text-right"><strong>Registro de usuario</strong><br><small>¿Ya tienes cuenta? Ingresa
@@ -44,13 +96,13 @@
 
             </div>
 
-            <div class="card rounded-0 modulo-acceso" id="ayuda">
+            <div class="card rounded-0 modulo-acceso shadow" id="ayuda">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 text-right border-right border-info ayuda" [routerLink]="['/terminos']">
                             Términos y condiciones del servicio
                         </div>
-                        <div class="col-6 text-left ayuda">
+                        <div class="col-6 text-left ayuda" [routerLink]="['/aviso']">
                             Aviso de privacidad
                         </div>
                     </div>
