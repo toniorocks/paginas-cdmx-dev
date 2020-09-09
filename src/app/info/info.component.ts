@@ -11,9 +11,6 @@ declare const grecaptcha: any;
 })
 export class InfoComponent implements OnInit {
 
-
-	accesoForm: FormGroup;
-
 	accesoActive: boolean;
 	registroActive: boolean;
 	ayudaActive: boolean;
@@ -26,23 +23,7 @@ export class InfoComponent implements OnInit {
 		$("#registro").hide();
 		$("#ayuda").hide();
 
-		this.accesoForm = new FormGroup({
-			correo: new FormControl('', [
-				Validators.required,
-				Validators.email,
-				Validators.maxLength(100)
-			]),
-			contrasena: new FormControl('', [
-				Validators.required,
-				Validators.minLength(5),
-				Validators.maxLength(10)
-			]),
-		});
-
 	}
-
-	get correo() { return this.accesoForm.get('correo'); } //Con estos métodos el formulario del front puede acceder a las propiedades del componente
-	get contrasena() { return this.accesoForm.get('contrasena'); } //Con estos métodos el formulario del front puede acceder a las propiedades del componente
 
 	login(): void {
 
@@ -76,23 +57,5 @@ export class InfoComponent implements OnInit {
 		this.ayudaActive = false;
 
 	}
-
-	onSubmit(): void {
-
-		let context = this;
-
-		grecaptcha.ready(function () {
-			grecaptcha.execute('6Lcs08cZAAAAAMubo9ibuTHZgP1wMUFseQUNWqHY', { action: 'submit' }).then(function (token) {
-				// Add your logic to submit to your backend server here.
-				console.warn(context.accesoForm.value);
-			});
-		});
-
-
-
-	}
-
-
-
 
 }

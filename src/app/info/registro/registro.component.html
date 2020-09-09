@@ -1,0 +1,39 @@
+<div class="card-body p-4">
+    <p class="text-right">
+        <strong>Registro de usuario</strong><br>
+        <small>¿Ya tienes cuenta? entra <span class="text-primary cursor-pointer">aquí</span></small></p>
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <input type="email" formControlName="correo" class="form-control"
+                [ngClass]="{ 'is-invalid': f.correo.touched && f.correo.errors }" placeholder="Correo electrónico" />
+            <div *ngIf="f.correo.touched && f.correo.errors" class="invalid-feedback">
+                <div *ngIf="f.correo.errors.required">Correo electrónico es requerido</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="email" formControlName="pass" class="form-control"
+                [ngClass]="{ 'is-invalid': f.pass.touched && f.pass.errors }" placeholder="Contraseña" required>
+            <div *ngIf="f.pass.touched && f.pass.errors" class="invalid-feedback">
+                <div *ngIf="f.pass.errors.required">Contraseña requerida</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="password" formControlName="confirma" class="form-control"
+                [ngClass]="{ 'is-invalid': f.confirma.touched && f.confirma.errors }" placeholder="Repetir contraseña"
+                required>
+            <div *ngIf="f.confirma.touched && f.confirma.errors" class="invalid-feedback">
+                <div *ngIf="f.confirma.errors.required">Campo requerido</div>
+                <div *ngIf="f.confirma.errors.mustMatch">La contraseñas no coinciden</div>
+            </div>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox"
+                value="true">&nbsp;<label><small>Acepto los términos y condiciones del servicio</small></label><br>
+            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox"
+                value="true">&nbsp;<label><small>He leído la política de privacidad</small></label>
+        </div>
+        <button class="btn btn-block btn-secondary" type="submit"
+            [disabled]="f.correo.errors || f.pass.errors || f.confirma.errors">Enviar</button>
+    </form>
+
+</div>

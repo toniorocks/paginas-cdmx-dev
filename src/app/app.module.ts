@@ -9,6 +9,8 @@ import { PlanesComponent } from './planes/planes.component';
 import { InfoComponent } from './info/info.component';
 import { AvisoComponent } from './aviso/aviso.component';
 import { TerminosComponent } from './terminos/terminos.component';
+import { AccesoComponent } from './info/acceso/acceso.component';
+import { RegistroComponent } from './info/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { TerminosComponent } from './terminos/terminos.component';
     PlanesComponent,
     InfoComponent,
     AvisoComponent,
-    TerminosComponent
+    TerminosComponent,
+    AccesoComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
