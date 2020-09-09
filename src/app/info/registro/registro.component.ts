@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MustMatch } from '../../shared/custom-validators.directive';
+import { passwordMatch } from '../../shared/custom-validators.directive';
 
 @Component({
 	selector: 'app-registro',
@@ -20,10 +20,10 @@ export class RegistroComponent implements OnInit {
 			correo: ['', Validators.required, Validators.email, Validators.maxLength(50)],
 			pass: ['', Validators.required, Validators.minLength(6), Validators.maxLength(10)],
 			confirma: ['', Validators.required, Validators.minLength(6), Validators.maxLength(10)],
-			aviso: [false, Validators.required],
-			terminos: [false, Validators.required]
+			terminos: [false, Validators.required],
+			privacidad: [false, Validators.required]
 		}, {
-			validators: MustMatch('pass', 'confirma')
+			validators: passwordMatch
 		})
 
 	}

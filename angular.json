@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "cdmx-web-pages"
+    }
+  },
+  "defaultProject": "cdmx-web-pages",
+  "cli": {
+    "analytics": false
+  }
 }

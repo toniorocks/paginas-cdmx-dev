@@ -5,35 +5,36 @@
     <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <input type="email" formControlName="correo" class="form-control"
-                [ngClass]="{ 'is-invalid': f.correo.touched && f.correo.errors }" placeholder="Correo electrónico" />
+                [ngClass]="{ 'is-invalid': f.correo.touched && f.correo.errors }" placeholder="Correo electrónico" required email>
             <div *ngIf="f.correo.touched && f.correo.errors" class="invalid-feedback">
                 <div *ngIf="f.correo.errors.required">Correo electrónico es requerido</div>
+                <div *ngIf="f.correo.errors.email">El formato no es válido</div>
             </div>
         </div>
         <div class="form-group">
-            <input type="email" formControlName="pass" class="form-control"
-                [ngClass]="{ 'is-invalid': f.pass.touched && f.pass.errors }" placeholder="Contraseña" required>
+            <input type="password" formControlName="pass" class="form-control"
+                [ngClass]="{ 'is-invalid': f.pass.touched && f.pass.errors }" placeholder="Contraseña" required minlength="6" maxlength="15">
             <div *ngIf="f.pass.touched && f.pass.errors" class="invalid-feedback">
                 <div *ngIf="f.pass.errors.required">Contraseña requerida</div>
+                <div *ngIf="f.pass.errors.minlength">Al menos 6 caracteres</div>
             </div>
         </div>
         <div class="form-group">
             <input type="password" formControlName="confirma" class="form-control"
                 [ngClass]="{ 'is-invalid': f.confirma.touched && f.confirma.errors }" placeholder="Repetir contraseña"
-                required>
+                required minlength="6" maxlength="15">
             <div *ngIf="f.confirma.touched && f.confirma.errors" class="invalid-feedback">
                 <div *ngIf="f.confirma.errors.required">Campo requerido</div>
-                <div *ngIf="f.confirma.errors.mustMatch">La contraseñas no coinciden</div>
+                <div *ngIf="f.confirma.errors.passwordMatch">La contraseñas no coinciden</div>
             </div>
         </div>
         <div class="form-check">
-            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox"
-                value="true">&nbsp;<label><small>Acepto los términos y condiciones del servicio</small></label><br>
-            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox"
-                value="true">&nbsp;<label><small>He leído la política de privacidad</small></label>
+            <input class="form-check-input position-static" type="checkbox" value="true" formControlName="terminos" name="terminos" required>&nbsp;<label for="terminos"><small>Acepto los términos y condiciones del servicio</small></label>&nbsp;<a [routerLink]="['/terminos']" class="text-secondary text-right"><i class="icofont-link-alt"></i></a><br>
+            <input class="form-check-input position-static" type="checkbox" value="true" formControlName="privacidad" name="privacidad" required>&nbsp;<label for="privacidad"><small>He leído la política de privacidad</small></label>&nbsp;<a [routerLink]="['/aviso']" class="text-secondary text-right"><i class="icofont-link-alt"></i></a>
         </div>
-        <button class="btn btn-block btn-secondary" type="submit"
-            [disabled]="f.correo.errors || f.pass.errors || f.confirma.errors">Enviar</button>
+        <small>Ingrese los datos correctamente para activar el botón</small>
+        <button class="btn btn-block btn-lg btn-secondary" type="submit"
+            [disabled]="f.correo.errors || f.pass.errors || f.confirma.errors || f.terminos.errors || f.privacidad.errors">Enviar</button>
     </form>
 
 </div>
