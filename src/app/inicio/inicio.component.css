@@ -10,6 +10,13 @@ p{
     display: block;
     width: 100%;
     height: 400px;
+    margin-top: -200px;
     /*background-color: #049DBF;*/
     
 }
+
+@media only screen and (max-width: 993px) {
+    .canvas{
+        margin-top: 0;
+    }
+  }
