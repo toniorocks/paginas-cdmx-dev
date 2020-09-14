@@ -9,7 +9,11 @@ img.main{
 }
 #contenedor{
     min-height: 40rem;
-    background-color: rgba(255, 255, 255, 1);
+    
+    background: #FDC830;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     -webkit-box-shadow: -1px 9px 11px -6px rgba(0,48,145,1);
     -moz-box-shadow: -1px 9px 11px -6px rgba(0,48,145,1);
     box-shadow: -1px 9px 11px -6px rgba(0,48,145,1);

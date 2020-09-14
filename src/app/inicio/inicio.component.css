@@ -5,3 +5,11 @@ p{
     background-color: transparent;
     border: 0;
 }
+
+.canvas{
+    display: block;
+    width: 100%;
+    height: 400px;
+    /*background-color: #049DBF;*/
+    
+}
