@@ -4,13 +4,14 @@
         <h3 class="text-info"><strong>$1499 <small>MXN</small></strong></h3>
         <p>Obtenga una inovadora página web al precio de una convecional</p>
         <p><small>Aplican restricciones*</small></p>
-        <button class="btn btn-dark btn-lg shadow-lg" data-toggle="modal" data-target="#exampleModal"><i
-                class="icofont-hand text-primary"></i>&nbsp;Solicitar página</button>
+        <button class="btn btn-dark btn-lg shadow-lg" data-toggle="modal" data-target="#exampleModal"
+            data-backdrop="static" data-keyboard="false"><i class="icofont-hand text-primary"></i>&nbsp;Solicitar
+            página</button>
         <!-- <button class="btn btn-lg btn-dark text-light border-0">Saber más</button> -->
     </div>
     <div class="col-sm-8">
         <div id="canvas" class="canvas">
-            <img class="image-responsive" src="/assets/imagenes/main_01.svg" style="position: relative; z-index: 1;">
+            <img class="img-fluid" src="/assets/imagenes/main_01.svg" style="position: relative; z-index: 1;">
         </div>
     </div>
 </div>
@@ -20,15 +21,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered rounded-0" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Solicitud para página web</h5>
+                <h6 class="modal-title" id="exampleModalLabel">Solicitud para página web</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <p>Par poder dar seguimiento a su solicitud necesitamos que nos proporcione algunos datos que serán
+                    protegidos por nuestro aviso de privacidad.</p>
                 <div class="row">
                     <div class="col-sm-6">
-                        <img src="/assets/imagenes/responsive.svg">
+                        <img class="img-fluid rounded mx-auto d-block mt-3 mb-5" src="/assets/imagenes/responsive.svg"
+                            width="80%">
                         <p class="m-4">Tu sitio web se verá bien desde cualquier dispositivo.</p>
                         <ul class="list-group m-4">
                             <li class="list-group-item">
@@ -84,28 +88,73 @@
                         </div>
                         <div class="card border rounded-0">
                             <div class="card-body">
-                                <label>Correo Electrónico</label>
-                                <input type="email" name="correo" class="form-control mt-0 mb-4 rounded-0">
-                                <label>Número telefónico</label>
-                                <input type="number" name="numero" class="form-control mb-4 rounded-0">
-                                <label><small>Breve descripción de su página <span>(opcional)</span></small></label>
-                                <textarea rows="4" class="form-control mb-2 rounded-0"></textarea> 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        <small>Acepto los términos y condiciones del servicio</small>
-                                    </label>
-                                    &nbsp;
-                                    <i class="icofont-external-link"></i>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      <small>Acepto el aviso de privacidad</small>
-                                    </label>
-                                    &nbsp;
-                                    <i class="icofont-external-link"></i>
-                                  </div>
+                                <div class="alert alert-info alert-dismissible fade show">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <i class="icofont-info-circle icofont-2x"></i>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <p><small>La informacón que ingreses en el formulario esta protegida por
+                                                    nuestro aviso de privacidad.</small></p>
+                                            <button class="btn btn-sm btn-secondary">Aceptar aviso</button>&nbsp;
+                                            <button class="btn btn-sm btn-secondary">Ver aviso</button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+                                    <label>Correo Electrónico</label>
+                                    <input type="email" email formControlName="correo" name="correo"
+                                        class="form-control mt-0 mb-0 rounded-0"
+                                        [ngClass]="{ 'is-invalid': f.correo.touched && f.correo.errors, 'is-valid': f.correo.touched }">
+                                    <div *ngIf="f.correo.touched && f.correo.errors" class="text-danger">
+                                        <div *ngIf="f.correo.errors?.required">El correo es requerido.</div>
+                                        <div *ngIf="f.correo.errors?.email">No es formato válido</div>
+                                    </div>
+                                    <label>Número telefónico</label>
+                                    <input type="text" formControlName="numero" name="numero"
+                                        class="form-control mb-0 rounded-0" minlength="10" maxlength="10" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                        [ngClass]="{ 'is-invalid': f.numero.touched && f.numero.errors, 'is-valid': f.numero.touched }"
+                                    >
+                                    <div *ngIf="f.numero.touched && f.numero.errors" class="text-danger">
+                                        <div *ngIf="f.numero.errors?.required">
+                                            El número es requerido
+                                        </div>
+                                        <div *ngIf="f.numero.errors?.minlength || f.numero.errors?.maxlength">
+                                            Debe ser 10 dígitos exactamente
+                                        </div>
+                                    </div>
+
+                                    <label><small>Breve descripción de su página <span>(opcional)</span></small></label>
+                                    <textarea rows="4" maxlength="500" (keyup)="descripcion = f.descripcion.value" formControlName="descripcion" class="form-control mb-2 rounded-0"></textarea>
+                                    <div class="row" *ngIf="descripcion.length > 0">
+                                        <div class="col-sm-6 text-muted text-left">
+                                            <small>Te quedan {{ 500 - descripcion.length }} letras</small>
+                                        </div>
+                                        <div class="col-sm-6 text-muted text-right">
+                                            <small>Máximo 500</small>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            <small>Acepto los términos y condiciones del servicio</small>
+                                        </label>
+                                        &nbsp;
+                                        <i class="icofont-external-link"></i>
+                                    </div> -->
+                                    <div class="form-check">
+                                        <input class="form-check-input" formControlName="aviso" type="checkbox" value="" id="defaultCheck2">
+                                        <label class="form-check-label" for="defaultCheck2">
+                                            <small>Acepto el aviso de privacidad</small>
+                                        </label>
+                                        &nbsp;
+                                        <i class="icofont-external-link"></i>
+                                    </div>
+                                </form>
+                                <h5 id="recordatorio-aviso">Debe aceptar el aviso de privacidad</h5>
                             </div>
                         </div>
                     </div>
@@ -113,7 +162,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary btn-lg"><i class="icofont-ui-check icofont-1x"></i> Enviar datos</button>
+                <button type="button" class="btn btn-primary btn-lg" [disabled]="!validForm"><i
+                        class="icofont-ui-check icofont-1x"></i> Enviar datos</button>
             </div>
         </div>
     </div>
