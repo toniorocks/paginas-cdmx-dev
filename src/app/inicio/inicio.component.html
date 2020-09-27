@@ -88,7 +88,7 @@
                         </div>
                         <div class="card border rounded-0">
                             <div class="card-body">
-                                <div class="alert alert-info alert-dismissible fade show">
+                                <div id="alerta-recordatorio" class="alert alert-info alert-dismissible fade show">
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <i class="icofont-info-circle icofont-2x"></i>
@@ -96,8 +96,8 @@
                                         <div class="col-sm-10">
                                             <p><small>La informacón que ingreses en el formulario esta protegida por
                                                     nuestro aviso de privacidad.</small></p>
-                                            <button class="btn btn-sm btn-secondary">Aceptar aviso</button>&nbsp;
-                                            <button class="btn btn-sm btn-secondary">Ver aviso</button>
+                                            <button class="btn btn-sm btn-secondary" (click)="aceptarAviso()">Aceptar aviso</button>&nbsp;
+                                            <button class="btn btn-sm btn-secondary" (click)="verAviso()">Ver aviso</button>
                                         </div>
                                     </div>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -106,7 +106,7 @@
                                 </div>
                                 <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
                                     <label>Correo Electrónico</label>
-                                    <input type="email" email formControlName="correo" name="correo"
+                                    <input id="correo" type="email" email formControlName="correo" name="correo"
                                         class="form-control mt-0 mb-0 rounded-0"
                                         [ngClass]="{ 'is-invalid': f.correo.touched && f.correo.errors, 'is-valid': f.correo.touched }">
                                     <div *ngIf="f.correo.touched && f.correo.errors" class="text-danger">
@@ -151,10 +151,10 @@
                                             <small>Acepto el aviso de privacidad</small>
                                         </label>
                                         &nbsp;
-                                        <i class="icofont-external-link"></i>
+                                        <i (click)="verAviso()" class="icofont-external-link"></i>
                                     </div>
                                 </form>
-                                <h5 id="recordatorio-aviso">Debe aceptar el aviso de privacidad</h5>
+                                <h5 id="recordatorio-aviso" class="animate__animated animate__bounceOutLeft">Debe aceptar el aviso de privacidad</h5>
                             </div>
                         </div>
                     </div>
@@ -164,6 +164,27 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary btn-lg" [disabled]="!validForm"><i
                         class="icofont-ui-check icofont-1x"></i> Enviar datos</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="avisoModal" tabindex="-1" role="dialog" aria-labelledby="avisoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg rounded-0" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="avisoModalLabel">Solicitud para página web</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-aviso *ngIf="verAviso_"></app-aviso>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success btn-lg" (click)="aceptarAviso()"><i class="icofont-like"></i> Aceptar</button>
             </div>
         </div>
     </div>
